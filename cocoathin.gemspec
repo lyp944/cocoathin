@@ -11,16 +11,15 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{cocoathin}
   spec.description   = %q{cocoathin}
-  # spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/lyp944/cocoathin"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-    #
+    spec.metadata["allowed_push_host"] = "https://rubygems.org"
     # spec.metadata["homepage_uri"] = spec.homepage
-    # spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
+    spec.metadata["source_code_uri"] = "https://github.com/lyp944/cocoathin"
     # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
   else
     raise "RubyGems 2.6 or newer is required to protect against " \
@@ -40,5 +39,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_runtime_dependency "thor", "~> 0.19"
   spec.add_runtime_dependency "rainbow", "~> 2.2"
-  spec.add_runtime_dependency "minitest"
+  spec.add_runtime_dependency "minitest", "~> 5.11"
 end
