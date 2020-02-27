@@ -4,7 +4,7 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 
 TODO: Delete this and the text above, and describe your gem
 
-## Installation
+<!--## Installation
 
 Add this line to your application's Gemfile:
 
@@ -18,11 +18,53 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cocoathin
+    $ gem install cocoathin-->
+    
+    ## 
+## intro
+暂时只适用于Objc项目
+`cocoathin`参考了[objcthin](https://github.com/svenJamy/objcthin)的部分解析`Mach-O`文件的代码，并在其基础上增加了更多的过滤功能，如pod引入的库等，使结果更准确
+
+
+#### 原理
+`cocoathin`通过命令行工具`otool`解析`Mach-O`文件,通过`dwarfdump`命令行工具解析`.a`文件，再经过正则过滤出无用类及方法
+
+#### 注意
+输出结果后仍然需要<font color=red>人工校验</font>后再删除
+
+以下这些情况会<font color=red>找不到</font>
+
+1. 只是被继承的类，被认定为Unused
+2. 间接初始化的类被认定为Unused，如：
+
+```Objc
+//MYCell 被认定为 Unused
+MYCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"xxx" forIndexPath:indexPath];
+```
+
+3. 假如`self`是	`UnusedModel`类，此种  `[[self alloc]init]` 调用，`UnusedModel`被认定为Unused
+4. 等等
 
 ## Usage
+需要 ruby >= 2.6
+#### 这个gem还没有发布到https://rubygems.org，因此只能本地使用
+#### clone后的时候方法
+所有命令都是在项目所在目录
+1. 构建
+```ruby
+bin/setup
+bundle exec rake install 
+```
 
-TODO: Write usage instructions here
+2. 使用
+
+```ruby
+# 找到有所得没有被引用的类 （ruby ./bin/cocoathin help findclass）
+ruby ./bin/cocoathin findclass "/xx/xx/Debug-iphoneos"
+# 找到有所得没有被引用的方法 （ruby ./bin/cocoathin help findcsel）
+ruby ./bin/cocoathin findsel "/xx/xx/Debug-iphoneos"
+```
+
 
 ## Development
 
