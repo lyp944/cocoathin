@@ -58,9 +58,13 @@ bundle exec rake install
 
 2. 使用
 
+`path` 为项目中 `Products/xxx.app`右键`show in Finder`后，`.app`的上层文件夹，
+使用真机时就是`Debug-iphoneos`文件夹的路径
+
 ```ruby
 # 找到有所得没有被引用的类 （ruby ./bin/cocoathin help findclass）
 ruby ./bin/cocoathin findclass "/xx/xx/Debug-iphoneos"
+
 # 找到有所得没有被引用的方法 （ruby ./bin/cocoathin help findcsel）
 ruby ./bin/cocoathin findsel "/xx/xx/Debug-iphoneos"
 ```
