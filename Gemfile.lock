@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     cocoathin (0.1.0)
-      minitest
+      minitest (~> 5.11)
       rainbow (~> 2.2)
       thor (~> 0.19)
 

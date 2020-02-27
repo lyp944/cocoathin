@@ -4,7 +4,7 @@ require 'cocoathin'
 class Mygemtest < Minitest::Test
 
   def test_find_class
-    path = ''
+    path = 'xxx/Build/Products/Debug-iphoneos'
     puts Cocoathin::GemImp.find_class_imp(path)
   end
 

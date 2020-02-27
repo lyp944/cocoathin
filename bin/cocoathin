@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'cocoathin'
+
+Cocoathin::Commander.start

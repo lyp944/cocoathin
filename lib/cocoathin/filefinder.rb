@@ -44,13 +44,23 @@ module Cocoathin
       a_list
     end
 
+    def find_app_machs()
+      list = []
+      Pathname.new(@rootpath).children.each do |pn|
+        ext = pn.extname
+        if ext == '.app'
+          path = pn.to_s + '/' + pn.basename('.app').to_s
+          list << path
+        end
+      end
+      list
+    end
+
     def find_app_mach()
       Find.find(@rootpath) do |path|
         pn = Pathname.new(path)
         ext = pn.extname
-        if ext == '.app'
-          return path + '/' + pn.basename('.app').to_s
-        end
+        return path + '/' + pn.basename('.app').to_s if ext == '.app'
       end
     end
 
